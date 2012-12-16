@@ -108,9 +108,9 @@ endif
 ifeq ($(dbg),1)
       CCFLAGS   += -g
       NVCCFLAGS += -g -G
-      TARGET := debug
+      TARGET    := debug
 else
-      TARGET := release
+      TARGET    := release
 endif
 
 
@@ -120,18 +120,18 @@ INCLUDES      := -I$(CUDA_INC_PATH) -I. -I.. -I../../common/inc
 # Target rules
 all: build
 
-build: bandwidthTest
+build: simpleMultiCopy
 
-bandwidthTest.o: bandwidthTest.cu
+simpleMultiCopy.o: simpleMultiCopy.cu
 	$(NVCC) $(NVCCFLAGS) $(EXTRA_NVCCFLAGS) $(GENCODE_FLAGS) $(INCLUDES) -o $@ -c $<
 
-bandwidthTest: bandwidthTest.o
+simpleMultiCopy: simpleMultiCopy.o
 	$(GCC) $(CCFLAGS) -o $@ $+ $(LDFLAGS) $(EXTRA_LDFLAGS)
 	mkdir -p ../../bin/$(OSLOWER)/$(TARGET)
 	cp $@ ../../bin/$(OSLOWER)/$(TARGET)
 
 run: build
-	./bandwidthTest
+	./simpleMultiCopy
 
 clean:
-	rm -f bandwidthTest bandwidthTest.o 
+	rm -f simpleMultiCopy simpleMultiCopy.o 
