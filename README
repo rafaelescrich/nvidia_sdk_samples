@@ -1,0 +1,12 @@
+Our goal is to demonstrate that it only takes simple Makefile modifications and env changes to get most compute only CUDA code to build with PathScale ENZO.
+
+# General Makefile changes
+
+# ENV
+# NVCC=/opt/enzo-12-14/bin/pathcu
+# GCC=/opt/enzo-12-14/bin/pathcu
+# GENCODE_SM10="" GENCODE_SM20="" GENCODE_SM30=""
+# LDFLAGS=""
+# CUDA_PATH=""
+# CUDA_INC_PATH="/opt/enzo-12-14/include/4.9.03/cuda"
+
